@@ -1,0 +1,17 @@
+[package]
+name = "rust-simple-MLP"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rand = "*"
+ndarray = "0.15"
+ndarray-linalg = { version = "0.16", features = ["intel-mkl"] }
+
+[[bin]]
+name = "rust_simple_MLP"
+path = "src/main.rs"
+
+[lib]
+name = "rust_simple_MLP"
+path = "src/lib.rs"
