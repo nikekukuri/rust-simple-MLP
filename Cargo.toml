@@ -9,9 +9,9 @@ ndarray = "0.15"
 ndarray-linalg = { version = "0.16", features = ["intel-mkl"] }
 
 [[bin]]
-name = "rust_simple_MLP"
+name = "rust_mlp"
 path = "src/main.rs"
 
 [lib]
-name = "rust_simple_MLP"
+name = "rust_mlp"
 path = "src/lib.rs"
