@@ -1,24 +1,27 @@
+#![allow(non_snake_case)]
 use ndarray::*;
 use crate::layer::Layer;
 
 pub struct Model {
-    input_size: usize,
     layers: Vec<Layer>,
     pub loss_history: Vec<f64>,
-    output_size: usize,
 }
 
 impl Model {
     pub fn new(
-        input_size: usize,
         layers: Vec<Layer>,
-        output_size: usize,
     ) -> Self {
         Self {
-            input_size,
             layers,
             loss_history: Vec::new(),
-            output_size,
+        }
+    }
+
+    fn validate_nodes(&self) {
+        for i in 1..self.layers.len() {
+            if self.layers[i - 1].out.len() != self.layers[i].x.len() {
+                panic!("Invalid Nodes Connect. Check layer parameter.");
+            }
         }
     }
 
@@ -31,6 +34,7 @@ impl Model {
         }
     }
     pub fn learn(&mut self, x: Array1<f64>, t: Array1<f64>) {
+        self.validate_nodes();
         let loss = self.loss(x, t);
         self.backward(loss);
     }

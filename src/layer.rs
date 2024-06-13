@@ -11,8 +11,8 @@ pub struct Layer {
     dbias: Array1<f64>,
     weight: Array2<f64>,
     dweight: Array2<f64>,
-    x: Array1<f64>,
-    out: Array1<f64>,
+    pub x: Array1<f64>,
+    pub out: Array1<f64>,
 }
 
 impl Layer {

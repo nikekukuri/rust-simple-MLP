@@ -66,7 +66,7 @@ fn main() {
     let layer2 = Layer::new(hidden_size, output_size, activation::Activation::Sigmoid);
     layers.push(layer2);
 
-    let mut model = Model::new(input_size, layers, output_size);
+    let mut model = Model::new(layers);
     model.learn_iter(x, t, 400);
 
     println!("--- Model Evaluation ---");
